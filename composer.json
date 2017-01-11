@@ -1,0 +1,57 @@
+{
+    "name": "ellisio/laravel-phone",
+    "description": "A phone validator for Laravel using the free Twilio phone lookup service.",
+    "homepage": "https://github.com/ellisio/laravel-phone",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "phone",
+        "twilio",
+        "validator",
+        "validation",
+        "format",
+        "formatter"
+    ],
+    "authors": [
+        {
+            "name": "Andrew Ellis",
+            "email": "awellis89@gmail.com",
+            "homepage": "https://www.ellisthedev.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/container": "5.3.*",
+        "illuminate/contracts": "5.3.*",
+        "illuminate/support": "5.3.*",
+        "illuminate/validation": "5.3.*",
+        "twilio/sdk": "^5.4"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "^3.3",
+        "mockery/mockery": "^0.9.4",
+        "phpunit/phpunit": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EllisIO\\Phone\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EllisIO\\Tests\\Phone\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
