@@ -11,7 +11,7 @@ if (! function_exists('phone')) {
      */
     function phone(string $driver = null)
     {
-        return app(Phone::class)->driver($driver);
+        return app('phone')->driver($driver);
     }
 }
 
