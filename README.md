@@ -98,5 +98,28 @@ return [
 If you want to format the phone number using `INTERNATIONAL_FORMAT` use the following code:
 
 ```php
+use EllisIO\Phone\Facades\Phone;
 
+app(Phone::class)->formatNumber('5551234567');
 ```
+
+### Creating Phone Number Objects
+
+This library includes the ability to generate a `Phone` object. This object contains the following details about a number:
+
+- `countryCode`: ISO-3166 alpha 2 country code.
+- `number`: E.164 number.
+- `formattedNumber`: National formatted number.
+
+```php
+use EllisIO\Phone\Facades\Phone;
+
+$phone = app(Phone::class)->getPhone('5551234567');
+$phone->getCountryCode(); // Returns "US"
+$phone->getNumber(); // Returns "+15551234567"
+$phone->getFormattedNumber(); // Returns "(555) 123-4567"
+```
+
+## Support
+
+Need help? Create an [issue](https://github.com/ellisio/laravel-phone/issues).
