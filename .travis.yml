@@ -1,0 +1,19 @@
+language: php
+sudo: false
+matrix:
+  include:
+  - php: 7.0
+    env: LARAVEL_VERSION=5.3.*
+  - php: 7.1
+    env: LARAVEL_VERSION=5.3.*
+before_install:
+- composer self-update --stable -n
+- composer require "laravel/framework:${LARAVEL_VERSION}" --no-update -n
+install:
+- travis_retry composer install --no-suggest --prefer-dist -n -o
+script:
+- vendor/bin/phpunit
+notifications:
+  email: false
+  slack:
+    secure: T8rORruaJ5Q4krc2A4sDZeWUugVRrF0e4v9YprPZ2W8SrUVG3mpHtcswPGytldCAi5PZDqmsSkn725T7swwwVzbAeYcU0MNWdMoXTeUK1EXbNNIGSF3w92skurN67mbsPViHFN84o1Uz+ePqZZ2DfKXFQrn6eycbizriuSXw0upA7SLOJaY+dI0Oa7Id5GUrpULFDai69tZQEC2U7HlO75mxLvOdKJCk6ZntEolmh00WwFOO4A8RteoX8YRrffdF+THNj6XCh1OvN4FAdk9xbOOz4BtX3x0Rc/7YXwZnDUGC+3QJyyfDDn9XzUsj72wzyK3sZS+gj/pdckIK0iwYDGJ62LcUSYh5eSss9GRIcqDtizhle67jMMntYHsEC3/8rbb9r36RE+3bUMdNPcd7Anfz7iwL6yDnVTvLRe7n+hR37fdgYIqfsBQJTbuTEOGqISM5BT8+Mu24sVnRhhd0Epg6lVWh3+Gbr4TEz77d790dJRxT2dC9OiSkDSK02ESmPbqWq/9T/ifVX0oil2bF27LkgBr1qoPEySYemNw1nWxlsv85D0E0potq25LBpTWPn7FeiGeYOj6xZsSl86Bmm0BOXnJ1xJf0aSg4RcJElIHtw7IvNjc8ZbOh/8m+KDyxagqa1UWykP95D4omLevsl1cjT0DGNpkD7yl/GrpYoIs=
