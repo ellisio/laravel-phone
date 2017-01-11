@@ -2,9 +2,9 @@
 
 namespace EllisIO\Phone;
 
+use InvalidArgumentException;
 use EllisIO\Phone\Facades\Phone;
 use EllisIO\Phone\Exceptions\InvalidPhoneException;
-use InvalidArgumentException;
 
 class PhoneValidator
 {

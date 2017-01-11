@@ -2,8 +2,8 @@
 
 namespace EllisIO\Phone;
 
-use EllisIO\Phone\Exceptions\InvalidCountryCodeException;
 use EllisIO\Phone\Exceptions\InvalidPhoneException;
+use EllisIO\Phone\Exceptions\InvalidCountryCodeException;
 
 class Phone
 {
