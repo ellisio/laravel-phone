@@ -41,9 +41,7 @@ class Twilio implements Driver
                 ->phoneNumbers($phone)
                 ->fetch();
 
-            return new Phone(
-                $lookup->countryCode, $lookup->phoneNumber, $lookup->nationalFormat
-            );
+            return new Phone($lookup->phoneNumber, $lookup->nationalFormat, $lookup->countryCode);
         } catch (RestException $e) {
             throw new InvalidPhoneException("Phone [{$phone}] is invalid.");
         }

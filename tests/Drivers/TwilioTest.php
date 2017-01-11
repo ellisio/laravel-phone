@@ -29,7 +29,7 @@ class TwilioTest extends AbstractTestCase
 
     protected function getPhone()
     {
-        return new Phone('US', '+14153902337', '(415) 390-2337');
+        return new Phone('+14153902337', '(415) 390-2337', 'US');
     }
 
     protected function getDriver()

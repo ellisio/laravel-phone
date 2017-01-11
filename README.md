@@ -115,9 +115,11 @@ This library includes the ability to generate a `Phone` object. This object cont
 use EllisIO\Phone\Facades\Phone;
 
 $phone = app(Phone::class)->getPhone('5551234567');
-$phone->getCountryCode(); // Returns "US"
 $phone->getNumber(); // Returns "+15551234567"
+$phone->getNationalNumber(); // Returns "5551234567"
 $phone->getFormattedNumber(); // Returns "(555) 123-4567"
+$phone->getCountry(); // Returns "US"
+$phone->getCountryCallingCode(); // Returns "1"
 ```
 
 ## Support

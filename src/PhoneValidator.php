@@ -45,7 +45,7 @@ class PhoneValidator
         try {
             $phone = Phone::driver()->getPhone($value);
 
-            return in_array($phone->getCountryCode(), $params);
+            return in_array($phone->getCountry(), $params);
         } catch (InvalidPhoneException $e) {
             return false;
         }
