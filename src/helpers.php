@@ -1,7 +1,5 @@
 <?php
 
-use EllisIO\Phone\Facades\Phone;
-
 if (! function_exists('phone')) {
     /**
      * Returns the Phone implementation for the given driver.
