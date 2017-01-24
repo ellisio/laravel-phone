@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+## V2.0.0 (01/24/2017)
+
+* Laravel 5.4 Support
+
 ## V1.0.1 (01/11/2017)
 
 * Fixed the phone() helper
