@@ -22,9 +22,6 @@
     ],
     "require": {
         "php": ">=7.0",
-        "illuminate/container": "5.3.*|5.4.*",
-        "illuminate/contracts": "5.3.*|5.4.*",
-        "illuminate/support": "5.3.*|5.4.*",
         "illuminate/validation": "5.3.*|5.4.*",
         "twilio/sdk": "^5.4"
     },
@@ -52,6 +49,5 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability": "dev",
     "prefer-stable": true
 }
