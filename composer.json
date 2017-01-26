@@ -22,10 +22,10 @@
     ],
     "require": {
         "php": ">=7.0",
-        "illuminate/contracts": "5.3.*|5.4.*",
-        "illuminate/container": "5.3.*|5.4.*",
-        "illuminate/support": "5.3.*|5.4.*",
-        "illuminate/validation": "5.3.*|5.4.*",
+        "illuminate/contracts": "5.4.*",
+        "illuminate/container": "5.4.*",
+        "illuminate/support": "5.4.*",
+        "illuminate/validation": "5.4.*",
         "twilio/sdk": "^5.4"
     },
     "require-dev": {

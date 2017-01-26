@@ -4,23 +4,9 @@ php:
   - 7.0
   - 7.1
 
-env:
-  - ILLUMINATE_VERSION=5.4.*
-
-matrix:
-  include:
-    - php: 7.0
-      env: ILLUMINATE_VERSION=5.3.*
-    - php: 7.1
-      env: ILLUMINATE_VERSION=5.3.*
-
 before_install:
   - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
   - travis_retry composer self-update
-  - travis_retry composer require "illuminate/contracts:${ILLUMINATE_VERSION}" --no-update
-  - travis_retry composer require "illuminate/container:${ILLUMINATE_VERSION}" --no-update
-  - travis_retry composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update
-  - travis_retry composer require "illuminate/validation:${ILLUMINATE_VERSION}" --no-update
 
 install:
   - travis_retry composer install --prefer-source --no-interaction --no-suggest
