@@ -3,7 +3,8 @@ CHANGE LOG
 
 ## V2.0.0 (01/24/2017)
 
-* Laravel 5.4 Support
+* Added Laravel 5.4 Support
+* Removed Laravel 5.3 Support
 
 ## V1.0.1 (01/11/2017)
 
