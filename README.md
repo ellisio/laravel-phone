@@ -43,7 +43,7 @@ Add the following to your `config/app.php` aliases list:
 ```php
 'aliases' => [
     // ...
-    'Phone' => 'EllisIO\Phone\Facades\Phone::class',
+    'Phone' => EllisIO\Phone\Facades\Phone::class,
     // ...
 ],
 ```
