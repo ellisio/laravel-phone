@@ -42,8 +42,8 @@ class PhoneValidator
      */
     public function validatePhoneCountry(string $attribute, string $value, array $params)
     {
-        if (count($params) < 1) {
-            throw new InvalidArgumentException('Validation rule phone_country requires at least 1 parameters.');
+        if (empty($params)) {
+            throw new InvalidArgumentException('Validation rule phone_country requires at least 1 parameter.');
         }
 
         try {

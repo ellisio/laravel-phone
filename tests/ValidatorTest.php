@@ -2,6 +2,7 @@
 
 namespace EllisIO\Tests\Phone;
 
+use InvalidArgumentException;
 use Illuminate\Support\Facades\Validator;
 
 class ValidatorTest extends AbstractTestCase
@@ -74,6 +75,13 @@ class ValidatorTest extends AbstractTestCase
             str_replace([':attribute', ':types'], ['phone', 'US,CA'], $lang['phone_country']),
             $validator->errors()->first('phone')
         );
+    }
+
+    public function testValidatePhoneCountryParamsLessThanZero()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $validator = $this->getValidator('4153902337', 'phone_country');
+        $this->assertTrue($validator->passes());
     }
 
     protected function getValidator($phone, $rules)
