@@ -15,10 +15,12 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 
-script: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+script:
+  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then vendor/bin/phpunit; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; fi
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
 notifications:
   email: false
