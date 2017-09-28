@@ -11,9 +11,9 @@ install:
   - travis_retry composer install --prefer-source --no-interaction --no-suggest
 
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; chmod +x ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; ./cc-test-reporter before-build; fi
 
 script:
   - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then vendor/bin/phpunit; fi
