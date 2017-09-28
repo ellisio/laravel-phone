@@ -3,9 +3,22 @@
 namespace EllisIO\Tests\Phone;
 
 use EllisIO\Phone\Phone;
+use InvalidArgumentException;
 
 class PhoneTest extends AbstractTestCase
 {
+    public function testE164Compliancy()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        new Phone('test', 'test', 'test');
+    }
+
+    public function testISO3166Alpha2Compliancy()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        new Phone('+14153902337', '(415) 390-2337', 'test');
+    }
+
     public function testGetNumber()
     {
         $phone = $this->getPhone();
