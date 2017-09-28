@@ -67,17 +67,13 @@ class PhoneFactory implements FactoryContract
     {
         $config = $this->getConfig($name);
 
-        if (is_null($config)) {
-            throw new InvalidArgumentException("Phone driver [{$name}] is not defined.");
-        }
-
         $driverMethod = 'create'.ucfirst($name).'Driver';
 
         if (method_exists($this, $driverMethod)) {
             return $this->{$driverMethod}($config);
         }
 
-        throw new InvalidArgumentException("Driver [{$config['driver']}] is not defined.");
+        throw new InvalidArgumentException("Method [{$driverMethod}] does not exist.");
     }
 
     /**
@@ -101,6 +97,10 @@ class PhoneFactory implements FactoryContract
      */
     protected function getConfig($name)
     {
+        if (! isset($this->config['drivers'][$name])) {
+            throw new InvalidArgumentException("Config driver [{$name}] is not defined.");
+        }
+
         return $this->config['drivers'][$name];
     }
 
