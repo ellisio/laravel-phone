@@ -11,6 +11,8 @@ class PhoneValidator
     /**
      * Validates the given phone to ensure it is a phone.
      *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     *
      * @param string $attribute
      * @param string $value
      * @param array $params
@@ -30,6 +32,8 @@ class PhoneValidator
     /**
      * Validates the given phone to ensure it is a phone, as well as ensure
      * that it belongs to one of the the given countries set in the params.
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      *
      * @param string $attribute
      * @param string $value
