@@ -31,7 +31,8 @@
     "require-dev": {
         "graham-campbell/testbench": "^4.0",
         "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "codeclimate/php-test-reporter": "^0.4.4"
     },
     "autoload": {
         "psr-4": {
