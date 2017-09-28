@@ -1,9 +1,11 @@
 <h1 align="center">Laravel Phone</h1>
 <p align="center">
-    <a href="https://travis-ci.org/ellisio/laravel-phone"><img src="https://travis-ci.org/ellisio/laravel-phone.svg" alt="Build Status"></a>
-    <a href="https://packagist.org/packages/ellisio/laravel-phone"><img src="https://poser.pugx.org/ellisio/laravel-phone/d/total.svg" alt="Total Downloads"></a>
     <a href="https://packagist.org/packages/ellisio/laravel-phone"><img src="https://poser.pugx.org/ellisio/laravel-phone/v/stable.svg" alt="Latest Stable Version"></a>
     <a href="https://packagist.org/packages/ellisio/laravel-phone"><img src="https://poser.pugx.org/ellisio/laravel-phone/license.svg" alt="License"></a>
+    <a href="https://packagist.org/packages/ellisio/laravel-phone"><img src="https://poser.pugx.org/ellisio/laravel-phone/d/total.svg" alt="Total Downloads"></a>
+    <a href="https://travis-ci.org/ellisio/laravel-phone"><img src="https://travis-ci.org/ellisio/laravel-phone.svg" alt="Build Status"></a>
+    <a href="https://codeclimate.com/github/ellisio/laravel-phone"><img src="https://codeclimate.com/github/ellisio/laravel-phone/badges/gpa.svg" /></a>
+    <a href="https://codeclimate.com/github/ellisio/laravel-phone/coverage"><img src="https://codeclimate.com/github/ellisio/laravel-phone/badges/coverage.svg" /></a>
 </p>
 
 ## Introduction
