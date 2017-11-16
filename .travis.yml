@@ -11,7 +11,9 @@ install:
   - travis_retry composer install --prefer-source --no-interaction --no-suggest
 
 before_script:
-  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then echo "test"; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "NOT test"; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then echo curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
   - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then chmod +x ./cc-test-reporter; fi
   - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then ./cc-test-reporter before-build; fi
 
