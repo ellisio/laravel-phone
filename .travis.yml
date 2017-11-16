@@ -16,11 +16,11 @@ before_script:
   - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./cc-test-reporter before-build; fi
 
 script:
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; fi
+  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; fi
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then vendor/bin/phpunit; fi
 
 after_script:
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
 notifications:
   email: false
