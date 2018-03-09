@@ -62,9 +62,21 @@ class Phone
         $this->nationalNumber = preg_replace('/\D/', '', $formattedNumber);
         $this->formattedNumber = $formattedNumber;
         $this->country = $country;
-        $this->countryCallingCode = (int) str_replace(
-            ['+', $this->nationalNumber], '', $this->number
-        );
+
+        switch ($country) {
+            case 'gb':
+                $nationalNumber = substr($this->nationalNumber, 1);
+
+                $this->countryCallingCode = (int) str_replace(
+                    ['0', '+', $nationalNumber], '', $this->number
+                );
+                break;
+            default:
+                $this->countryCallingCode = (int) str_replace(
+                    ['+', $this->nationalNumber], '', $this->number
+                );
+                break;
+        }
     }
 
     /**
