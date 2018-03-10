@@ -64,11 +64,11 @@ class Phone
         $this->country = $country;
 
         switch ($country) {
-            case 'gb':
+            case 'GB':
                 $nationalNumber = substr($this->nationalNumber, 1);
 
                 $this->countryCallingCode = (int) str_replace(
-                    ['0', '+', $nationalNumber], '', $this->number
+                    ['+', $nationalNumber], '', $this->number
                 );
                 break;
             default:
