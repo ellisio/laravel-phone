@@ -1,4 +1,4 @@
-exlcude_patterns:
+exclude_patterns:
 - "config/"
 - "src/Contracts/"
 - "src/Exceptions/"
