@@ -6,6 +6,11 @@ php:
   - 7.0
   - 7.1
   - 7.2
+notifications:
+  email: false
+branches:
+  only:
+    - master
 before_install:
   - composer global require hirak/prestissimo
   - composer self-update
