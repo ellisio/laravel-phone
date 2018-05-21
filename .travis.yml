@@ -1,28 +1,21 @@
 language: php
-
+env:
+  global:
+    - CC_TEST_REPORTER_ID=7bc3ed42718fcf5b2250d92a4a2bc166ad2ca3b1dcec63b1e17335ef746b4dea
 php:
   - 7.0
   - 7.1
-
+  - 7.2
 before_install:
   - composer global require hirak/prestissimo
   - composer self-update
-
 install:
   - composer install --prefer-dist --no-interaction --no-suggest
-
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-
 script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-notifications:
-  email: false
-  slack:
-    secure: T8rORruaJ5Q4krc2A4sDZeWUugVRrF0e4v9YprPZ2W8SrUVG3mpHtcswPGytldCAi5PZDqmsSkn725T7swwwVzbAeYcU0MNWdMoXTeUK1EXbNNIGSF3w92skurN67mbsPViHFN84o1Uz+ePqZZ2DfKXFQrn6eycbizriuSXw0upA7SLOJaY+dI0Oa7Id5GUrpULFDai69tZQEC2U7HlO75mxLvOdKJCk6ZntEolmh00WwFOO4A8RteoX8YRrffdF+THNj6XCh1OvN4FAdk9xbOOz4BtX3x0Rc/7YXwZnDUGC+3QJyyfDDn9XzUsj72wzyK3sZS+gj/pdckIK0iwYDGJ62LcUSYh5eSss9GRIcqDtizhle67jMMntYHsEC3/8rbb9r36RE+3bUMdNPcd7Anfz7iwL6yDnVTvLRe7n+hR37fdgYIqfsBQJTbuTEOGqISM5BT8+Mu24sVnRhhd0Epg6lVWh3+Gbr4TEz77d790dJRxT2dC9OiSkDSK02ESmPbqWq/9T/ifVX0oil2bF27LkgBr1qoPEySYemNw1nWxlsv85D0E0potq25LBpTWPn7FeiGeYOj6xZsSl86Bmm0BOXnJ1xJf0aSg4RcJElIHtw7IvNjc8ZbOh/8m+KDyxagqa1UWykP95D4omLevsl1cjT0DGNpkD7yl/GrpYoIs=
