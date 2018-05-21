@@ -1,0 +1,6 @@
+exlcude_patterns:
+- "config/"
+- "src/Contracts/"
+- "src/Exceptions/"
+- "**/tests/"
+- "**/vendor/"
