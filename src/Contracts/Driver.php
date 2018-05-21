@@ -2,6 +2,9 @@
 
 namespace EllisIO\Phone\Contracts;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface Driver
 {
     /**
