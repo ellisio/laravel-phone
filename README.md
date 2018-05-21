@@ -10,7 +10,7 @@
 
 ## Introduction
 
-A phone validator for Laravel using the free [Twilio Lookup API](https://www.twilio.com/lookup).
+A phone validator for Laravel 5.5+ using the free [Twilio Lookup API](https://www.twilio.com/lookup).
 
 This package gives developers the ability to validate phone numbers and format phone numbers. All data will be pulled from the Twilio Lookup API.
 
@@ -28,30 +28,6 @@ composer require ellisio/laravel-phone
 
 ### Step 2
 
-Add to your `config/app.php` service provider list:
-
-```php
-'providers' => [
-    // ...
-    EllisIO\Phone\PhoneServiceProvider::class,
-    // ...
-],
-```
-
-### Step 3
-
-Add the following to your `config/app.php` aliases list:
-
-```php
-'aliases' => [
-    // ...
-    'Phone' => EllisIO\Phone\Facades\Phone::class,
-    // ...
-],
-```
-
-### Step 4
-
 Add your Twilio credentials to your `.env` file. _If you don't have a Twilio account you can register for one [here](https://www.twilio.com/) for free._
 
 ```
@@ -59,7 +35,7 @@ TWILIO_ACCOUNT_SID=xxxxxxxx
 TWILIO_AUTH_TOKEN=xxxxxxxx
 ```
 
-### Step 5 (Optional)
+### Step 3 (Optional)
 
 If you want to customize the configuration for this package, you can publish the config file to `/config/phone.php` by running the following command:
 
