@@ -5,22 +5,22 @@ php:
   - 7.1
 
 before_install:
+  - travis_retry composer global require hirak/prestissimo
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer install --prefer-source --no-interaction --no-suggest
+  - travis_retry composer install --no-interaction --no-suggest
 
 before_script:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then chmod +x ./cc-test-reporter; fi
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./cc-test-reporter before-build; fi
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; fi
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then vendor/bin/phpunit; fi
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
   email: false
