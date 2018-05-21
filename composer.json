@@ -21,18 +21,16 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "illuminate/contracts": "5.5.*",
-        "illuminate/container": "5.5.*",
-        "illuminate/support": "5.5.*",
-        "illuminate/validation": "5.5.*",
+        "php": "^7.1.3",
+        "illuminate/contracts": "5.5.*|5.6.*",
+        "illuminate/container": "5.5.*|5.6.*",
+        "illuminate/support": "5.5.*|5.6.*",
+        "illuminate/validation": "5.5.*|5.6.*",
         "twilio/sdk": "~5.19.0"
     },
     "require-dev": {
-        "graham-campbell/testbench": "^4.0",
-        "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "~6.0",
-        "codeclimate/php-test-reporter": "^0.4.4"
+        "graham-campbell/testbench": "^4.0|^5.0",
+        "mockery/mockery": "^1.1.0"
     },
     "autoload": {
         "psr-4": {
@@ -47,8 +45,15 @@
             "EllisIO\\Tests\\Phone\\": "tests/"
         }
     },
-    "scripts": {
-        "test": "phpunit"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EllisIO\\Phone\\PhoneServiceProvider"
+            ],
+            "aliases": {
+                "Phone": "EllisIO\\Phone\\Facades\\Phone"
+            }
+        }
     },
     "config": {
         "preferred-install": "dist"
