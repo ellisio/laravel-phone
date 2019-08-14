@@ -4,7 +4,6 @@ namespace EllisIO\Phone;
 
 use InvalidArgumentException;
 use EllisIO\Phone\Facades\Phone;
-use EllisIO\Phone\Exceptions\InvalidPhoneException;
 
 class PhoneValidator
 {
@@ -18,15 +17,9 @@ class PhoneValidator
      * @param array $params
      * @return bool
      */
-    public function validatePhone(string $attribute, string $value, array $params)
+    public function validatePhone(string $attribute, string $value, array $params): bool
     {
-        try {
-            Phone::driver()->getPhone($value);
-
-            return true;
-        } catch (InvalidPhoneException $e) {
-            return false;
-        }
+        return ! is_null(Phone::driver()->getPhone($value));
     }
 
     /**
@@ -40,18 +33,18 @@ class PhoneValidator
      * @param array $params
      * @return bool
      */
-    public function validatePhoneCountry(string $attribute, string $value, array $params)
+    public function validatePhoneCountry(string $attribute, string $value, array $params): bool
     {
         if (empty($params)) {
             throw new InvalidArgumentException('Validation rule phone_country requires at least 1 parameter.');
         }
 
-        try {
-            $phone = Phone::driver()->getPhone($value);
+        $phone = Phone::driver()->getPhone($value);
 
-            return in_array($phone->getCountry(), $params);
-        } catch (InvalidPhoneException $e) {
+        if (! $phone) {
             return false;
         }
+
+        return in_array($phone->getCountry(), $params);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace EllisIO\Phone\Facades;
 
+use EllisIO\Phone\Contracts\Factory;
 use Illuminate\Support\Facades\Facade;
 
 class Phone extends Facade
@@ -13,6 +14,6 @@ class Phone extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'phone';
+        return Factory::class;
     }
 }

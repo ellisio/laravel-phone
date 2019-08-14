@@ -6,7 +6,6 @@ use Twilio\Rest\Client;
 use EllisIO\Phone\Phone;
 use EllisIO\Phone\Contracts\Driver;
 use Twilio\Exceptions\RestException;
-use EllisIO\Phone\Exceptions\InvalidPhoneException;
 
 class Twilio implements Driver
 {
@@ -31,10 +30,9 @@ class Twilio implements Driver
      * Returns the details about the phone number.
      *
      * @param string $phone
-     * @return \EllisIO\Phone\Phone
-     * @throws \EllisIO\Phone\Exceptions\InvalidPhoneException
+     * @return \EllisIO\Phone\Phone|null
      */
-    public function getPhone(string $phone)
+    public function getPhone(string $phone): ?Phone
     {
         try {
             $lookup = $this->twilio->lookups
@@ -43,7 +41,7 @@ class Twilio implements Driver
 
             return new Phone($lookup->phoneNumber, $lookup->nationalFormat, $lookup->countryCode);
         } catch (RestException $e) {
-            throw new InvalidPhoneException("Phone [{$phone}] is invalid.");
+            return null;
         }
     }
 
@@ -52,10 +50,11 @@ class Twilio implements Driver
      *
      * @param string $phone
      * @return string
-     * @throws \EllisIO\Phone\Exceptions\InvalidPhoneException
      */
-    public function formatNumber(string $phone)
+    public function formatNumber(string $phone): string
     {
-        return $this->getPhone($phone)->getFormattedNumber();
+        return optional($this->getPhone($phone), function ($phone) {
+            return $phone->getFormattedNumber();
+        });
     }
 }

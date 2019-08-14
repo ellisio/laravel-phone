@@ -1,8 +1,8 @@
-vendor
-composer.lock
 .idea
-.phpunit.result.cache
-
-# Code Climate
+.vscode
 build/
+coverage/
+vendor
+.phpunit.result.cache
 codeclimate.json
+composer.lock

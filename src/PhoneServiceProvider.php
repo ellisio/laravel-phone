@@ -2,18 +2,16 @@
 
 namespace EllisIO\Phone;
 
+use EllisIO\Phone\Contracts\Factory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Container\Container;
-use EllisIO\Phone\Contracts\Factory as FactoryContract;
 
 class PhoneServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->setupConfig();
         $this->setupTranslations();
@@ -23,15 +21,13 @@ class PhoneServiceProvider extends ServiceProvider
 
     /**
      * Setup the config.
-     *
-     * @return void
      */
-    protected function setupConfig()
+    protected function setupConfig(): void
     {
         $source = realpath(__DIR__.'/../config/phone.php');
 
         if ($this->app->runningInConsole()) {
-            $this->publishes([$source => config_path('phone.php')], 'config');
+            $this->publishes([$source => config_path('phone.php')], 'laravel-phone-config');
         }
 
         $this->mergeConfigFrom($source, 'phone');
@@ -39,26 +35,22 @@ class PhoneServiceProvider extends ServiceProvider
 
     /**
      * Setup the translations.
-     *
-     * @return void
      */
-    protected function setupTranslations()
+    protected function setupTranslations(): void
     {
         $source = realpath(__DIR__.'/../lang');
 
         $this->loadTranslationsFrom($source, 'phone');
 
         if ($this->app->runningInConsole()) {
-            $this->publishes([$source => resource_path('lang/vendor/phone')], 'translations');
+            $this->publishes([$source => resource_path('lang/vendor/phone')], 'laravel-phone-translations');
         }
     }
 
     /**
      * Extends the validator.
-     *
-     * @return void
      */
-    protected function extendValidator()
+    protected function extendValidator(): void
     {
         $lang = $this->app->translator->get('phone::validation');
 
@@ -68,27 +60,20 @@ class PhoneServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerPhone();
     }
 
     /**
      * Register the phone instance.
-     *
-     * @return void
      */
-    protected function registerPhone()
+    protected function registerPhone(): void
     {
-        $this->app->singleton('phone', function (Container $app) {
-            return new PhoneFactory($app->config->get('phone'));
+        $this->app->singleton(Factory::class, function () {
+            return new PhoneManager($this->app);
         });
-
-        $this->app->alias('phone', PhoneFactory::class);
-        $this->app->alias('phone', FactoryContract::class);
     }
 
     /**
@@ -96,8 +81,8 @@ class PhoneServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return ['phone'];
+        return [Factory::class];
     }
 }
