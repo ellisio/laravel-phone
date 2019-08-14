@@ -39,7 +39,7 @@ jobs:
                 command: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
             - run:
                 name: Upload coverage
-                command: then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+                command: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
       - when:
           unless: <<parameters.coverage>>
           steps:
