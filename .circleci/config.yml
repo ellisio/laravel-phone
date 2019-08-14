@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run: echo $GITHUB_TOKEN
       - run:
-          name: install
+          name: Install dependencies
           command: |
             composer require "laravel/framework:<<parameters.laravel>>" --no-update -n
             composer require "symfony/lts:<<parameters.symfony>>" --no-update -n
@@ -29,29 +29,30 @@ jobs:
           condition: <<parameters.coverage>>
           steps:
             - run:
-                name: prepare code coverage
+                name: Install Code Coverage
                 command: |
                   curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
                   chmod +x ./cc-test-reporter
+            - run:
+                name: Run PHPUnit
+                command: |
                   ./cc-test-reporter before-build
-            - run:
-                name: Run phpunit
-                command: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-            - run:
-                name: Upload coverage
-                command: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+                  vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+                  ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
       - when:
           unless: <<parameters.coverage>>
           steps:
             - run:
-                name: Run phpunit
+                name: Run PHPUnit
                 command: vendor/bin/phpunit
   release:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npx semantic-release
+      - run:
+          name: Create release
+          command: npx semantic-release
 workflows:
   version: 2
   build:
