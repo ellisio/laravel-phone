@@ -4,7 +4,6 @@ namespace EllisIO\Phone;
 
 use EllisIO\Phone\Contracts\Factory;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Container\Container;
 
 class PhoneServiceProvider extends ServiceProvider
 {

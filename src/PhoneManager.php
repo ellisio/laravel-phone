@@ -17,7 +17,7 @@ class PhoneManager extends Manager implements Contracts\Factory
     protected function createTwilioDriver(): Twilio
     {
         $config = $this->app['config']->get('phone.drivers.twilio');
-        
+
         $twilio = new TwilioClient($config['account_sid'], $config['auth_token']);
 
         return new Twilio($twilio);
