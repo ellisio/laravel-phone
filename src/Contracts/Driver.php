@@ -2,6 +2,8 @@
 
 namespace EllisIO\Phone\Contracts;
 
+use EllisIO\Phone\Phone;
+
 /**
  * @codeCoverageIgnore
  */
@@ -12,16 +14,14 @@ interface Driver
      *
      * @param string $phone
      * @return \EllisIO\Phone\Phone
-     * @throws \EllisIO\Phone\Exceptions\InvalidPhoneException
      */
-    public function getPhone(string $phone);
+    public function getPhone(string $phone): ?Phone;
 
     /**
      * Returns the formatted phone number for the give phone.
      *
      * @param string $phone
      * @return string
-     * @throws \EllisIO\Phone\Exceptions\InvalidPhoneException
      */
-    public function formatNumber(string $phone);
+    public function formatNumber(string $phone): string;
 }

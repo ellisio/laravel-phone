@@ -3,8 +3,8 @@
 namespace EllisIO\Tests\Phone\Drivers;
 
 use EllisIO\Phone\Phone;
-use EllisIO\Phone\PhoneFactory;
 use EllisIO\Tests\Phone\AbstractTestCase;
+use EllisIO\Phone\Facades\Phone as PhoneFacade;
 
 class TwilioTest extends AbstractTestCase
 {
@@ -34,6 +34,6 @@ class TwilioTest extends AbstractTestCase
 
     protected function getDriver()
     {
-        return (new PhoneFactory($this->app->config->get('phone')))->driver('twilio');
+        return PhoneFacade::driver('twilio');
     }
 }

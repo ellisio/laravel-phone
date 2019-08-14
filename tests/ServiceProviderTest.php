@@ -2,17 +2,15 @@
 
 namespace EllisIO\Tests\Phone;
 
-use EllisIO\Phone\PhoneFactory;
-use EllisIO\Phone\Contracts\Factory as FactoryContact;
+use EllisIO\Phone\Contracts\Factory;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTrait;
 
-    public function testPhoneFactoryIsInjectable()
+    public function testPhoneManagerIsInjectable()
     {
-        $this->assertIsInjectable(PhoneFactory::class);
-        $this->assertIsInjectable(FactoryContact::class);
+        $this->assertIsInjectable(Factory::class);
     }
 }

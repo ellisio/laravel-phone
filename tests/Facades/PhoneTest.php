@@ -2,7 +2,8 @@
 
 namespace EllisIO\Tests\Phone\Facades;
 
-use EllisIO\Phone\PhoneFactory;
+use EllisIO\Phone\PhoneManager;
+use EllisIO\Phone\Contracts\Factory;
 use EllisIO\Tests\Phone\AbstractTestCase;
 use EllisIO\Phone\Facades\Phone as Facade;
 use GrahamCampbell\TestBenchCore\FacadeTrait;
@@ -18,7 +19,7 @@ class PhoneTest extends AbstractTestCase
      */
     protected function getFacadeAccessor()
     {
-        return 'phone';
+        return Factory::class;
     }
 
     /**
@@ -38,6 +39,6 @@ class PhoneTest extends AbstractTestCase
      */
     protected function getFacadeRoot()
     {
-        return PhoneFactory::class;
+        return PhoneManager::class;
     }
 }

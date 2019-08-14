@@ -1,5 +1,7 @@
 <?php
 
+use EllisIO\Phone\Contracts\Factory;
+
 if (! function_exists('phone')) {
     /**
      * Returns the Phone implementation for the given driver.
@@ -9,7 +11,7 @@ if (! function_exists('phone')) {
      */
     function phone(string $driver = null)
     {
-        return app('phone')->driver($driver);
+        return app(Factory::class)->driver($driver);
     }
 }
 

@@ -13,5 +13,5 @@ interface Factory
      * @param string|null $name
      * @return \EllisIO\Phone\Contracts\Driver
      */
-    public function driver(string $name = null);
+    public function driver($name = null);
 }

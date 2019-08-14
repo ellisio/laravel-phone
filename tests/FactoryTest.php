@@ -3,7 +3,7 @@
 namespace EllisIO\Tests\Phone;
 
 use InvalidArgumentException;
-use EllisIO\Phone\PhoneFactory;
+use EllisIO\Phone\PhoneManager;
 use EllisIO\Phone\Contracts\Driver;
 
 class FactoryTest extends AbstractTestCase
@@ -23,35 +23,23 @@ class FactoryTest extends AbstractTestCase
         $this->assertSame($config['default'], $factory->getDefaultDriver());
     }
 
-    public function testSetDefaultDriver()
-    {
-        $factory = $this->getFactory();
-        $factory->setDefaultDriver('test');
-
-        $this->assertSame('test', $factory->getDefaultDriver());
-    }
-
     public function testUndefinedConfig()
     {
-        try {
-            $factory = $this->getFactory();
-            $factory->driver('test');
-        } catch (InvalidArgumentException $e) {
-            $this->assertStringStartsWith('Config driver', $e->getMessage());
-        }
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Driver [test] not supported.');
+
+        $factory = $this->getFactory();
+        $factory->driver('test');
     }
 
     public function testUndefinedDriver()
     {
-        try {
-            $config = $this->app->config->get('phone');
-            $config['drivers']['test'] = [];
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Driver [test] not supported.');
 
-            $factory = new PhoneFactory($config);
-            $factory->driver('test');
-        } catch (InvalidArgumentException $e) {
-            $this->assertStringStartsWith('Method', $e->getMessage());
-        }
+        $this->app->config->set('phone.drivers.test', []);
+        $factory = new PhoneManager($this->app);
+        $factory->driver('test');
     }
 
     public function testMagicCall()
@@ -65,6 +53,6 @@ class FactoryTest extends AbstractTestCase
 
     protected function getFactory()
     {
-        return new PhoneFactory($this->app->config->get('phone'));
+        return new PhoneManager($this->app);
     }
 }
