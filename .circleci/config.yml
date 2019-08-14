@@ -17,7 +17,6 @@ jobs:
       - image: circleci/php:<<parameters.php>>
     steps:
       - checkout
-      - run: echo $GITHUB_TOKEN
       - run:
           name: Install dependencies
           command: |
