@@ -1,6 +1,7 @@
 vendor
 composer.lock
 .idea
+.phpunit.result.cache
 
 # Code Climate
 build/
