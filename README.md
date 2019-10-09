@@ -25,7 +25,7 @@
 
 ## Introduction
 
-A phone validator for Laravel 5.5+ using the free [Twilio Lookup API](https://www.twilio.com/lookup).
+A phone validator for Laravel 6+ using the free [Twilio Lookup API](https://www.twilio.com/lookup).
 
 This package gives developers the ability to validate phone numbers and format phone numbers. All data will be pulled from the Twilio Lookup API.
 
