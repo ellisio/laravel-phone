@@ -6,8 +6,6 @@ jobs:
         type: string
       laravel:
         type: string
-      symfony:
-        type: string
       phpunit:
         type: string
       coverage:
@@ -21,7 +19,6 @@ jobs:
           name: Install dependencies
           command: |
             composer require "laravel/framework:<<parameters.laravel>>" --no-update -n
-            composer require "symfony/lts:<<parameters.symfony>>" --no-update -n
             composer require "phpunit/phpunit:<<parameters.phpunit>>" --dev --no-update -n
             composer install --no-suggest --prefer-dist -n -o
       - when:
@@ -57,77 +54,15 @@ workflows:
   build:
     jobs:
       - build:
-          name: "php7.1-5.5"
-          php: "7.1"
-          laravel: 5.5.*
-          symfony: ^3.0
-          phpunit: ^6.5
-      - build:
-          name: "php7.1-5.6"
-          php: "7.1"
-          laravel: 5.6.*
-          symfony: ^4.0
-          phpunit: ^7.0
-      - build:
-          name: "php7.1-5.7"
-          php: "7.1"
-          laravel: 5.7.*
-          symfony: ^4.1
-          phpunit: ^7.0
-      - build:
-          name: "php7.1-5.8"
-          php: "7.1"
-          laravel: 5.8.*
-          symfony: ^4.2
-          phpunit: ^7.5
-      - build:
-          name: "php7.2-5.5"
+          name: "php7.2-6"
           php: "7.2"
-          laravel: 5.5.*
-          symfony: ^3.0
-          phpunit: ^6.5
+          laravel: ^6.0
+          phpunit: ^8.3
       - build:
-          name: "php7.2-5.6"
-          php: "7.2"
-          laravel: 5.6.*
-          symfony: ^4.0
-          phpunit: ^7.0
-      - build:
-          name: "php7.2-5.7"
-          php: "7.2"
-          laravel: 5.7.*
-          symfony: ^4.1
-          phpunit: ^7.0
-      - build:
-          name: "php7.2-5.8"
-          php: "7.2"
-          laravel: 5.8.*
-          symfony: ^4.2
-          phpunit: ^7.5
-      - build:
-          name: "php7.3-5.5"
+          name: "php7.3-6"
           php: "7.3"
-          laravel: 5.5.*
-          symfony: ^3.0
-          phpunit: ^6.5
-      - build:
-          name: "php7.3-5.6"
-          php: "7.3"
-          laravel: 5.6.*
-          symfony: ^4.0
-          phpunit: ^7.0
-      - build:
-          name: "php7.3-5.7"
-          php: "7.3"
-          laravel: 5.7.*
-          symfony: ^4.1
-          phpunit: ^7.0
-      - build:
-          name: "php7.3-5.8"
-          php: "7.3"
-          laravel: 5.8.*
-          symfony: ^4.2
-          phpunit: ^7.5
+          laravel: ^6.0
+          phpunit: ^8.3
           coverage: true
       - release:
           context: semantic-release
@@ -135,15 +70,5 @@ workflows:
             branches:
               only: master
           requires:
-            - php7.1-5.5
-            - php7.1-5.6
-            - php7.1-5.7
-            - php7.1-5.8
-            - php7.2-5.5
-            - php7.2-5.6
-            - php7.2-5.7
-            - php7.2-5.8
-            - php7.3-5.5
-            - php7.3-5.6
-            - php7.3-5.7
-            - php7.3-5.8
+            - php7.2-6
+            - php7.3-6
