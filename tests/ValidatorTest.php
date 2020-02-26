@@ -84,6 +84,9 @@ class ValidatorTest extends AbstractTestCase
         $this->assertTrue($validator->passes());
     }
 
+    /**
+     * @return \Illuminate\Validation\Validator
+     */
     protected function getValidator($phone, $rules)
     {
         return Validator::make([

@@ -16,7 +16,7 @@ class PhoneManager extends Manager implements Contracts\Factory
      */
     protected function createTwilioDriver(): Twilio
     {
-        $config = $this->app['config']->get('phone.drivers.twilio');
+        $config = $this->container['config']->get('phone.drivers.twilio');
 
         $twilio = new TwilioClient($config['account_sid'], $config['auth_token']);
 
@@ -30,6 +30,6 @@ class PhoneManager extends Manager implements Contracts\Factory
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']->get('phone.default');
+        return $this->container['config']->get('phone.default');
     }
 }
