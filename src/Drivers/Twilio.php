@@ -2,10 +2,10 @@
 
 namespace EllisIO\Phone\Drivers;
 
-use Twilio\Rest\Client;
-use EllisIO\Phone\Phone;
 use EllisIO\Phone\Contracts\Driver;
+use EllisIO\Phone\Phone;
 use Twilio\Exceptions\RestException;
+use Twilio\Rest\Client;
 
 class Twilio implements Driver
 {
