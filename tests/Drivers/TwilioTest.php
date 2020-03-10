@@ -2,9 +2,9 @@
 
 namespace EllisIO\Tests\Phone\Drivers;
 
+use EllisIO\Phone\Facades\Phone as PhoneFacade;
 use EllisIO\Phone\Phone;
 use EllisIO\Tests\Phone\AbstractTestCase;
-use EllisIO\Phone\Facades\Phone as PhoneFacade;
 
 class TwilioTest extends AbstractTestCase
 {

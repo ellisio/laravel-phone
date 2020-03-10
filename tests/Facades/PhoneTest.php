@@ -2,10 +2,10 @@
 
 namespace EllisIO\Tests\Phone\Facades;
 
-use EllisIO\Phone\PhoneManager;
 use EllisIO\Phone\Contracts\Factory;
-use EllisIO\Tests\Phone\AbstractTestCase;
 use EllisIO\Phone\Facades\Phone as Facade;
+use EllisIO\Phone\PhoneManager;
+use EllisIO\Tests\Phone\AbstractTestCase;
 use GrahamCampbell\TestBenchCore\FacadeTrait;
 
 class PhoneTest extends AbstractTestCase
