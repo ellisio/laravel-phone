@@ -57,12 +57,22 @@ workflows:
           name: "php7.2-6"
           php: "7.2"
           laravel: ^6.0
-          phpunit: ^8.3
+          phpunit: ^8.0
       - build:
           name: "php7.3-6"
           php: "7.3"
           laravel: ^6.0
-          phpunit: ^8.3
+          phpunit: ^8.0
+      - build:
+          name: "php7.2-7"
+          php: "7.2"
+          laravel: ^7.0
+          phpunit: ^8.5
+      - build:
+          name: "php7.3-7"
+          php: "7.3"
+          laravel: ^7.0
+          phpunit: ^8.5
           coverage: true
       - release:
           context: semantic-release

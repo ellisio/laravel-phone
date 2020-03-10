@@ -16,17 +16,17 @@
         {
             "name": "Andrew Ellis",
             "email": "awellis89@gmail.com",
-            "homepage": "https://www.ellisthedev.com",
+            "homepage": "https://twitter.com/ellisthedev",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.2",
-        "illuminate/contracts": "^6.0",
-        "illuminate/container": "^6.0",
-        "illuminate/support": "^6.0",
-        "illuminate/validation": "^6.0",
-        "twilio/sdk": "^5.0"
+        "php": ">=7.2.5",
+        "illuminate/contracts": "^6.0|^7.0",
+        "illuminate/container": "^6.0|^7.0",
+        "illuminate/support": "^6.0|^7.0",
+        "illuminate/validation": "^6.0|^7.0",
+        "twilio/sdk": "^6.0"
     },
     "require-dev": {
         "graham-campbell/testbench": "^5.0",
