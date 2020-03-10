@@ -2,8 +2,8 @@
 
 namespace EllisIO\Tests\Phone;
 
-use InvalidArgumentException;
 use Illuminate\Support\Facades\Validator;
+use InvalidArgumentException;
 
 class ValidatorTest extends AbstractTestCase
 {

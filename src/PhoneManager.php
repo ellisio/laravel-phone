@@ -2,8 +2,8 @@
 
 namespace EllisIO\Phone;
 
-use Illuminate\Support\Manager;
 use EllisIO\Phone\Drivers\Twilio;
+use Illuminate\Support\Manager;
 use Twilio\Rest\Client as TwilioClient;
 
 class PhoneManager extends Manager implements Contracts\Factory

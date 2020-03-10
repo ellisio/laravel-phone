@@ -2,9 +2,9 @@
 
 namespace EllisIO\Tests\Phone;
 
-use InvalidArgumentException;
-use EllisIO\Phone\PhoneManager;
 use EllisIO\Phone\Contracts\Driver;
+use EllisIO\Phone\PhoneManager;
+use InvalidArgumentException;
 
 class FactoryTest extends AbstractTestCase
 {
